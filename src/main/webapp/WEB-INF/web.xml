@@ -8,7 +8,7 @@
 	<!--  Spring 服务层的配置文件 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:config/applictionContext.xml</param-value>
+		<param-value>classpath:config/applicationContext.xml</param-value>
 	</context-param>
 	
     <!--  Spring 容器启动监听器 -->

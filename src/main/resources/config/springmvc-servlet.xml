@@ -7,14 +7,14 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd">
 <!-- ①：对web包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 -->
-    <context:component-scan base-package="com.autocompile.controller"/>
-    <mvc:annotation-driven/>
+   <context:component-scan base-package="com.better.controller"/>
+   <mvc:annotation-driven/>
  	<mvc:resources mapping="/public/**" location="/public/" cache-period="31556926" />
  	<mvc:default-servlet-handler/> 
    
-    <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+     <!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
     
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+	<!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
   		<property name="messageConverters">
 		   <list>
@@ -29,7 +29,24 @@
 		    	<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 		   </list>
   		</property>
+	</bean> -->
+	<!-- ②：启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+	    <property name="messageConverters">  
+	        <list>  
+	            <bean class="org.springframework.http.converter.StringHttpMessageConverter">  
+	                <property name="supportedMediaTypes">  
+	                    <list>
+							<value>text/html;charset=UTF-8</value>
+                            <value>application/json;charset=UTF-8</value>
+	                    </list>  
+	                </property>  
+	            </bean>  
+	            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />  
+	        </list>  
+	    </property>
 	</bean>
+	
 	
 	<!--  ③：对模型视图名称的解析，即在模型视图名称添加前后缀 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
