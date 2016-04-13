@@ -35,7 +35,7 @@
     </filter-mapping>  
 
     <!--  Spring MVC 的Servlet，它将加载WEB-INF/annomvc-servlet.xml 的配置文件，以启动Spring MVC模块-->
-        <servlet>
+    <servlet>
         <servlet-name>springmvc</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet
         </servlet-class>
@@ -50,5 +50,24 @@
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+ 	<context-param>     
+      <param-name>log4jConfigLocation</param-name>     
+      <param-value>classpath:config/log4j.properties</param-value>     
+	</context-param> 
+	
+	<context-param>     
+		<param-name>log4jRefreshInterval</param-name>     
+		<param-value>6000</param-value>     
+	</context-param>
+    <listener> 
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> 
+	</listener>
+	<welcome-file-list>
+	  <welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<listener>
+		<listener-class>com.better.servlet.SysListener</listener-class>
+	</listener>
 
 </web-app>

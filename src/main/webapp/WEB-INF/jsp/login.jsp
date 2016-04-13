@@ -10,6 +10,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="<%=basePath %>">
+
+<script type="text/javascript" src="./public/js/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="./public/js/wap.js"></script>
+<script type="text/javascript" src="./public/js/public.js"></script>
+
 <title>Login Page</title>
 </head>
 <body>
@@ -26,11 +32,32 @@
 					</div>
 				</div>
 				<div class="buttonDiv">
-					<button id="loginFun();">login</button>
-					<button id="cancelFun();">cancel</button>
+					<button onclick="loginFun();">login</button>
+					<button onclick="clearFun();">cancel</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+
+<script type="text/javascript">
+	$(function() {
+		
+	})
+	
+	function loginFun() {
+		var url = "loginLogic";
+		var obj = {};
+		obj.account = $("#account").val();
+		obj.passowrd = $("#password").val();
+		
+		ajaxPost(url, obj, redFun)
+	}
+	
+	function clearFun() {
+		$("#account").val("");
+		$("#password").val("");
+	}
+</script>
+
 </html>
