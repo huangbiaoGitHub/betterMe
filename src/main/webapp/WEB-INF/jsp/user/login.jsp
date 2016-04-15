@@ -46,7 +46,7 @@
 	})
 	
 	function loginFun() {
-		var url = "loginLogic";
+		var url = "user/loginLogic";
 		var obj = {};
 		obj.account = $("#account").val();
 		obj.passowrd = $("#password").val();

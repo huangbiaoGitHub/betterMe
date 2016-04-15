@@ -22,16 +22,6 @@ function ajaxPost(url, obj, succ) {
 function redFun(data) {
 	toast(data.msg);
 	if(data.ret == 0) {
-		function show(url) {
-			window.location.href = url;
-		}  
-	  
-		function _show(url) {  
-	    	return function() {  
-	    		show(url);  
-	        }  
-	    } 
-	    
-		setTimeout("window.location.href = " + data.url, 2000);
+		setTimeout("window.location.href = '" + data.url + "'", 2000);
 	}
 }
