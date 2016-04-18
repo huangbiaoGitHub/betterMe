@@ -1,6 +1,8 @@
 package com.better.service;
 
+import com.better.bean.User;
+
 public interface UserService {
 	
-	public void login();
+	public User login(String account, String password);
 }

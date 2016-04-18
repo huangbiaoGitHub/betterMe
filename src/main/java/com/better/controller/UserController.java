@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.better.bean.User;
 import com.better.service.UserService;
 import com.better.util.WebUtil;
 
@@ -32,8 +33,8 @@ public class UserController {
 	public Object loginLogic(HttpServletRequest request, String account, String password) {
 		HashMap<String, Object> backMap = new HashMap<String, Object>();
 		
-		this.userService.login();
-		WebUtil.setSession(request, "account", account);
+		User user = this.userService.login(account, password);
+		WebUtil.setSession(request, "user", user);
 		
 		backMap.put("msg", "succesee");
 		backMap.put("ret", 0);
